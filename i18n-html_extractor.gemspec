@@ -30,8 +30,8 @@ DESCRIPTION
   s.add_dependency('colored')
   s.add_dependency('rake')
   s.add_dependency('i18n-tasks')
-  s.add_dependency('activesupport', '> 3.2', '< 5.1')
-  s.add_dependency('railties', '> 3.2', '< 5.1')
+  s.add_dependency('activesupport', '> 3.2')
+  s.add_dependency('railties', '> 3.2')
 
   # s.add_development_dependency('vcr')
   s.add_development_dependency('pry')
