@@ -27,6 +27,7 @@ DESCRIPTION
 
   s.add_dependency('i18n')
   s.add_dependency('nokogiri')
+  s.add_dependency('ruby-pinyin')
   s.add_dependency('colored')
   s.add_dependency('rake')
   s.add_dependency('i18n-tasks')
