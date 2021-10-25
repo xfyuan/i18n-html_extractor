@@ -17,7 +17,7 @@ module I18n
 
       def save!(filename)
         File.open(filename, 'w') do |f|
-          result = @document.to_html(indent: 2, encoding: 'UTF-8')
+          result = CGI.unescapeHTML @document.to_html(indent: 2, encoding: 'UTF-8')
           ERB_REGEXPS.each do |regexp|
             regexp.inverse_replace!(result) do |string_format, data|
               string_format % { inner_text: erb_directives[data[:inner_text]] }
