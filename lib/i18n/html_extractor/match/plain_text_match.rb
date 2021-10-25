@@ -4,7 +4,7 @@ module I18n
       class PlainTextMatch < BaseMatch
         def self.create(document, node)
           return nil if node.name.start_with?('script')
-          node.text.split(/\@\@(=?)[a-z0-9\-]+\@\@/).map! do |text|
+          node.text.split(/\@\@(=?)[a-z0-9\-_]+\@\@/).select { |t| t =~ /[\p{Han}]/ }.map! do |text|
             new(document, node, text.strip) unless text.blank?
           end
         end
