@@ -11,12 +11,14 @@ module I18n
 
         def replace_text!
           self.key = pinyin_name_key
-          document.erb_directives[key] = translation_key_object
-          node.content = node.content.gsub(text, translation_key_target)
+          document.erb_directives[key] = " #{translation_key_object} "
+          if node.content =~ /@@=(?<inner_text>[a-z0-9\-_]+)@@/
+            node.content = node.content.gsub(/\A([\p{Han}]*[^\p{Han}]*[\p{Han}]*.*)(@@=[a-z0-9\-]+@@)\z/) do |matched_text|
+              "@@=#{key}@@ #{$2}"
+            end
+          else
+            node.content = node.content.gsub(text, "@@=#{key}@@")
         end
-
-        def translation_key_target
-          "<%= #{translation_key_object} %>"
         end
       end
     end
