@@ -4,7 +4,7 @@ module I18n
   module HTMLExtractor
     class ErbDocument
       ERB_REGEXPS = [
-        I18n::HTMLExtractor::TwoWayRegexp.new(/<%=(?<inner_text>.+?)%>/m, /@@=(?<inner_text>[a-z0-9\-]+)@@/m),
+        I18n::HTMLExtractor::TwoWayRegexp.new(/<%=(?<inner_text>.+?)%>/m, /@@=(?<inner_text>[a-z0-9\-_]+)@@/m),
         I18n::HTMLExtractor::TwoWayRegexp.new(/<%#(?<inner_text>.+?)%>/m, /@@#(?<inner_text>[a-z0-9\-]+)@@/m),
         I18n::HTMLExtractor::TwoWayRegexp.new(/<%(?<inner_text>.+?)%>/m, /@@(?<inner_text>[a-z0-9\-]+)@@/m)
       ].freeze
@@ -17,7 +17,7 @@ module I18n
 
       def save!(filename)
         File.open(filename, 'w') do |f|
-          result = CGI.unescapeHTML @document.to_html(indent: 2, encoding: 'UTF-8')
+          result = @document.to_html(indent: 2, encoding: 'UTF-8')
           ERB_REGEXPS.each do |regexp|
             regexp.inverse_replace!(result) do |string_format, data|
               string_format % { inner_text: erb_directives[data[:inner_text]] }
