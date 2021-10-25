@@ -1,3 +1,5 @@
+require 'ruby-pinyin'
+
 module I18n
   module HTMLExtractor
     module Match
@@ -7,6 +9,10 @@ module I18n
         def initialize(document, text)
           @document = document
           @text = text
+        end
+
+        def pinyin_name_key
+          PinYin.of_string(text[0,9]).join '_'
         end
 
         def translation_key_object
