@@ -10,9 +10,13 @@ module I18n
         end
 
         def replace_text!
-          key = SecureRandom.uuid
+          self.key = pinyin_name_key
           document.erb_directives[key] = translation_key_object
-          node.content = node.content.gsub(text, "@@=#{key}@@")
+          node.content = node.content.gsub(text, translation_key_target)
+        end
+
+        def translation_key_target
+          "<%= #{translation_key_object} %>"
         end
       end
     end
