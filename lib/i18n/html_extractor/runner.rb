@@ -5,7 +5,7 @@ module I18n
 
       def initialize(args = {})
         @files = file_list_from_pattern(args[:file_pattern])
-        @locale = args[:locale].present? ? args[:locale] : I18n.default_locale
+        @locale = args[:locale].present? ? args[:locale].to_sym : :'zh-CN'
         @verbose = args[:verbose]
       end
 
