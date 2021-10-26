@@ -23,7 +23,7 @@ namespace :i18n do
       cli.test_run
     end
 
-    task :auto, [:file_pattern] do |_, args|
+    task :auto, [:file_pattern, :locale] do |_, args|
       i18n = I18n::Tasks::BaseTask.new
 
       missing_translations = i18n.missing_keys

@@ -5,7 +5,7 @@ module I18n
 
       def initialize(args = {})
         @files = file_list_from_pattern(args[:file_pattern])
-        @locale = args[:locale].presence
+        @locale = args[:locale].present? ? args[:locale] : I18n.default_locale
         @verbose = args[:verbose]
       end
 
@@ -30,7 +30,7 @@ module I18n
           node.replace_text!
           document.save!(file)
 
-          add_translation! I18n.default_locale, node.key, node.text
+          add_translation! @locale, node.key, node.text
         end
       end
 
