@@ -12,7 +12,7 @@ module I18n
         end
 
         def pinyin_name_key
-          PinYin.of_string(text[0,15]).join '_'
+          PinYin.of_string(text[0,15]).join('_').downcase.gsub(':', '')
         end
 
         def translation_key_object
