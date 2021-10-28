@@ -40,7 +40,7 @@ module I18n
 
         def leaf_nodes
           @leaf_nodes ||= document.css('*:not(:has(*))').select do |n|
-            n.text.present? && n.text =~ /^[\p{Han}]/
+            n.text.present? && n.text =~ /[\p{Han}]/
           end
         end
       end
