@@ -10,7 +10,7 @@ module I18n
           [/^([ \t]*link_to (.*),[ ]?confirm:[ ]?)(("[^"]+")|('[^']+'))/, '\1%s', 3],
           [/^([ \t]*content_for (.*),)[ ]*(("[^"]+")|('[^']+'))/, '\1%s', 3],
           [/^([ \t]*react_component (.*),[ ]?placeholder:[ ]?)(("[^"]+")|('[^']+'))/, '\1%s', 3],
-          [/^([ \t]*react_component (.*),[ \t\n]*placeholder:[ ]?)(("[^"]+")|('[^']+'))/m, '\1%s', 3],
+          [/^([ \t]*react_component (.*),[ \t\n]*(placeholder|label):[ ]?)(("[^"]+")|('[^']+'))/m, '\1%s', 4],
           [/^([ \t]*text_field_tag (.*),[ ]?placeholder:[ ]?)(("[^"]+")|('[^']+'))/, '\1%s', 3],
           [/^([ \t]*number_field_tag (.*),[ ]?placeholder:[ ]?)(("[^"]+")|('[^']+'))/, '\1%s', 3],
           [/^([ \t]*form_group(.*),[ ]?label_text:[ ]?)(("[^"]+")|('[^']+'))/, '\1%s', 3],
