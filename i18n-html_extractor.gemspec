@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.version  = I18n::HTMLExtractor::VERSION
   s.required_ruby_version = '>= 2.0.0'
 
-  s.authors  = 'Piero Dotti'
-  s.email    = 'progiemmeh@gmail.com'
+  s.authors  = 'Piero Dotti/Xiaofeng Yuan'
+  s.email    = 'progiemmeh@gmail.com/yuan.xiaofeng@gmail.com'
   s.homepage = 'https://github.com/ProGM/i18n-html_extractor'
   s.summary = <<SUMMARY
 Rake tasks to extract text from html and put to i18n files.

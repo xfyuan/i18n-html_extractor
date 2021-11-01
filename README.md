@@ -1,10 +1,13 @@
-[![Build Status](https://travis-ci.org/ProGM/i18n-html_extractor.svg?branch=master)](https://travis-ci.org/ProGM/i18n-html_extractor)
-
 I18n HTML Extractor
 ---------------
 
 A set of rake tasks to extract strings from html templates into locale files.
 
+# Upgrades (2021 by xfyuan)
+
+- add support for rails 6.x
+- add many more erb directives support by regexp: link_to, content_for, select, xxx_tag, etc
+- support rails-react's react_component method
 
 # Introduction
 
@@ -17,7 +20,7 @@ It's not yet 100% functional, but I'd like to improve it.
 It's not yet published as a gem, since it's not ready, but you can start use it by adding it to you Gemfile:
 
 ```ruby
-gem 'i18n-html_extractor', github: 'ProGM/i18n-html_extractor'
+gem 'i18n-html_extractor', github: 'xfyuan/i18n-html_extractor'
 ```
 
 # How it works
@@ -37,4 +40,3 @@ Running `rake i18n:extract_html:auto`, all strings are moved to i18n locale file
 ### Interactive Mode
 
 Running `rake i18n:extract_html:interactive`, you can decide, for every string, which one to move to translation, and it's translation for every language.
-
