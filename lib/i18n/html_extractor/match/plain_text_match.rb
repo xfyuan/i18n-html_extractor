@@ -4,7 +4,7 @@ module I18n
       class PlainTextMatch < BaseMatch
         REGEXPS = [
           [/\A([\p{Han}]*[^\p{Han}]*[\p{Han}]*.*)(@@=[a-z0-9\-]+@@)\z/, '@@=%s@@ \2'],
-          [/([ \t\n]*@@=([a-z0-9\-_]+)@@[ \t\n]+)(([\w ]*)[\p{Han}]+)(\n.*)/m, '\1%s\5']
+          [/([ \t\n]*@@=([a-z0-9\-_]+)@@[ \t\n]+)(([\w ]*)[\p{Han}]+)(\n.*)/m, '\1@@=%s@@\5']
         ].freeze
 
         def self.create(document, node)
@@ -19,7 +19,7 @@ module I18n
           document.erb_directives[key] = " #{translation_key_object} "
           if node.content =~ /@@=(?<inner_text>[a-z0-9\-_]+)@@/
             REGEXPS.map do |r|
-              node.content = node.content.gsub(r[0], r[1] % translation_key_object)
+              node.content = node.content.gsub(r[0], r[1] % key)
             end
             # node.content = node.content.gsub(/\A([\p{Han}]*[^\p{Han}]*[\p{Han}]*.*)(@@=[a-z0-9\-]+@@)\z/) do |matched_text|
             #   "@@=#{key}@@ #{$2}"
