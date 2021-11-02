@@ -5,7 +5,7 @@ module I18n
 
       def initialize(args = {})
         @files = file_list_from_pattern(args[:file_pattern])
-        @locale = args[:locale].present? ? args[:locale].to_sym : :'zh-CN'
+        @locale = args[:locale].present? ? args[:locale].to_sym : i18n.locales
         @verbose = args[:verbose]
       end
 
@@ -30,6 +30,7 @@ module I18n
           node.replace_text!
           document.save!(file)
 
+          puts "Current target locale is #{@locale}".green
           add_translation! @locale, node.key, node.text
         end
       end
