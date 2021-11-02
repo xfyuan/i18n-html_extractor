@@ -33,9 +33,12 @@ It's made of three rake tasks:
 
 Running `rake i18n:extract_html:list`, you'll get a report of all files that contains strings that should be translated.
 
-### Automatic Mode
+### Automatic Mode (Upgrade by xfyuan)
 
-Running `rake i18n:extract_html:auto`, all strings are moved to i18n locale file of your default language.
+- Running `rake i18n:extract_html:auto`, all strings are moved to i18n all locale files.
+- Running `rake i18n:extract_html:auto[app/views/users/_base.html.erb]`, all strings in that file are moved to i18n all locale files.
+- Running `rake 'i18n:extract_html:auto[app/views/users/_base.html.erb, zh-CN]'`, all strings in that file are moved to i18n locale zh-CN file.
+- Running `rake i18n:extract_html:auto[app/views/users/**/*.erb]`, all strings in `*.erb` files of `app/views/users` folders are moved to i18n all locale files.
 
 ### Interactive Mode
 
